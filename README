@@ -1,0 +1,12 @@
+The high-level approach I used for this assignment is as follows:
+1. Establish socket connection
+2. Retrieve and parse first message
+3. Solve math problem and send result to server
+4. Repeat step 4 in a loop until the received message was not a STATUS message
+5. If the last message is a BYE message, print the secret flag
+6. If not, print an error message
+This approach proved successful and simple, and I experienced no major challenges in implementing the code necessary to make it all happen.
+
+The general challenges associated with this project were: socket connection and communication, encoding / decoding data, and parsing the math problems in status messages. Socket connection and communication was handled using the Python socket library. The library allows for simple connection to a given hostname and port, as implemented in the socket_setup function. Once the socket is set up correctly, the program processes the incoming messages from the server and responds with the answer to the math problem, with correct formatting. Encoding and decoding this information from strings to bytes and vice versa was a surprise to me, as I have not had to deal with this before. Not too difficult though! After this, once the final BYE message is encountered, the program prints out the secret flag and exits.
+
+In preliminary testing, I spent some time playing with sample code for the socket library. I was able to establish a connection to the server in an interactive Python session and send data back and forth. This was helpful in understanding the order of commands / messages to follow in my final program. I used these structures in my program as it stands now, and tested along the way to ensure the communication was occurring as I expected it to. Later on, I tested individual components such as information encoding / decoding and argument parsing separately. Once I felt comfortable with these I integrated them together into the final program. I then tested all possible combinations of CLI argument inputs to ensure I had covered my bases in terms of user input.
