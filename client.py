@@ -4,8 +4,11 @@ import argparse
 import socket
 import operator
 
-# Create the socket using the given port and hostname
 def socket_setup(port, hostname):
+    ''' Create the socket using the given port and hostname.
+    port - Port to connect to.
+    hostname - host to connect to, by text representation
+        (ex. 'zeta.coe.neu.edu').'''
     host = socket.gethostbyname(hostname)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
@@ -16,7 +19,10 @@ def socket_setup(port, hostname):
         sys.exit("Failed to create connection at host {} and port {}."
             .format(hostname, port))
 
-if __name__ == "__main__":
+def main():
+    ''' Main function. Connects to the server, handles all communication with
+    the server, and outputs the secret flag at the end of communication.
+    '''
     # Hostname, port, and NUID information
     hostname = 'zeta.coe.neu.edu'
     p = 50000
@@ -69,3 +75,6 @@ if __name__ == "__main__":
     # 7. If a message is received in an incorrect format, error:
     s.close()
     sys.exit("Received incorrect message. Ending communication. Message:\n{}".format(data))
+
+if __name__ == "__main__":
+    main()
